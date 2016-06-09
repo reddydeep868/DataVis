@@ -1,0 +1,452 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="Stylesheet.css" />
+
+</style>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", '1', {packages:['corechart']});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  var query = new google.visualization.Query(
+      'https://docs.google.com/spreadsheets/d/1hGr8IwaPaMmFnT8PzP7heVffhlZkz_K04K8OOUuOlMg/edit#gid=0');
+  query.send(handleQueryResponse);
+}
+
+function handleQueryResponse(response) {
+  if (response.isError()) {
+    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+    return;
+  }
+  var data = response.getDataTable();
+  var view= new google.visualization.DataView(data);
+   var view1= new google.visualization.DataView(data);
+   var view2= new google.visualization.DataView(data);
+var p=[0,61];
+var q=[62,123];
+var r=[124,185];
+  view.setColumns(p);
+  view1.setColumns(q);
+  view2.setColumns(r);
+var options={
+width: 800,
+      height: 500,
+	  
+      vAxis: {minValue:0, maxValue:10,title: 'Utility'},
+	  hAxis: { ticks: [2006,
+2007,
+2008,
+2009,
+2010,
+2011,
+2012,
+2013,
+2014,
+2015],format:'####',title:'Year'},
+animation: {
+        duration: 1000,
+        easing: 'out'
+      },
+	  title: "Statistical Analysis of Weather and Utility Data",
+	  //curveType: "function"
+	  
+};
+var options1={
+width: 800,
+      height: 500,
+	  
+      vAxis: {minValue:0, maxValue:10,title: 'Weather'},
+	  hAxis: { ticks: [2006,
+2007,
+2008,
+2009,
+2010,
+2011,
+2012,
+2013,
+2014,
+2015],format:'####',title:'Year'},
+animation: {
+        duration: 1000,
+        easing: 'out'
+      },
+	  title: "Statistical Analysis of Weather and Utility Data",
+	  //curveType: "function"
+	  
+};
+var options2={
+width: 800,
+      height: 500,
+	  
+      vAxis: {minValue:0, maxValue:10,title: 'Population'},
+	  hAxis: { ticks: [2006,
+2007,
+2008,
+2009,
+2010,
+2011,
+2012,
+2013,
+2014,
+2015],format:'####',title:'Year'},
+animation: {
+        duration: 1000,
+        easing: 'out'
+      },
+};
+    var button = document.getElementById('gen');
+  var chart = new google.visualization.LineChart(document.getElementById('columnchart'));
+ var chart1 = new google.visualization.LineChart(document.getElementById('columnchart1'));
+  var chart2 = new google.visualization.LineChart(document.getElementById('columnchart2'));
+  var drop = document.getElementById('dropdown');
+  drop.onchange=function(){
+  
+ if( drop.selectedIndex==1){
+ var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form2.box2[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form3.box3[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form4.box4[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+ 
+  var elem = document.getElementById('checkboxes1');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes4');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes3');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes2');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  if( drop.selectedIndex==2){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form3.box3[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form4.box4[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+  //document.getElementById("checkboxes1").style.display = 'none';
+  var elem = document.getElementById('checkboxes2');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes1');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes3');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes4');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  if( drop.selectedIndex==3){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form2.box2[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form4.box4[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+  //document.getElementById("checkboxes2").style.display = 'none';
+  var elem = document.getElementById('checkboxes3');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes2');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes1');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes4');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  if( drop.selectedIndex==4){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form2.box2[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form3.box3[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+  //document.getElementById("checkboxes2").style.display = 'none';
+  var elem = document.getElementById('checkboxes4');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes2');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes1');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes3');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  
+  if( drop.selectedIndex==5){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form3.box3[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form2.box2[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form4.box4[t3].checked=false;
+ }
+  //document.getElementById("checkboxes2").style.display = 'none';
+  var elem = document.getElementById('checkboxes5');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes3');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes1');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes2');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes4');
+elem5.style.display = 'none';
+  }
+  
+  }
+  draw();
+  function draw(){
+
+
+//view.setRows(view.getFilteredRows([{column: 0, value: 'Czech Republic'}]));	
+
+  chart.draw(view, options);
+ chart1.draw(view1, options1);
+ chart2.draw(view2, options2);
+  
+  }
+button.onclick = function() {
+//view.setColumns([0,2]);
+var elem = document.getElementById('US');
+elem.style.display = 'none';
+p=[];
+q=[];
+r=[];
+p.push(0);
+q.push(0);
+r.push(0);
+var i=0;
+
+var j=[1,2,3,4,5,6,7,8,9,10,11,12];
+var jj=[63,64,65,66,67,68,69,70,71,72,73,74];
+var jjj=[125,126,127,128,129,130,131,132,133,134,135,136];
+for(i=11;i>=0;i--)
+{
+
+if(chck_form1.box[i].checked == true)
+{
+//alert("checked"+ i);
+p.push(j[i]);
+q.push(jj[i]);
+r.push(jjj[i]);
+
+}
+}
+var k=0;
+var l=[13,14,15,16,17,18,19,20,21,22,23,24];
+var ll=[75,76,77,78,79,80,81,82,83,84,85,86];
+var lll=[137,138,139,140,141,142,143,144,145,146,147,148];
+for(k=11;k>=0;k--)
+{
+
+if(chck_form2.box2[k].checked == true)
+{
+//alert("checked"+ i);
+p.push(l[k]);
+q.push(ll[k]);
+r.push(lll[k]);
+}
+}
+var m=0;
+var n=[25,26,27,28,29,30,31,32,33,34,35,36];
+var nn=[87,88,89,90,91,92,93,94,95,96,97,98];
+var nnn=[149,150,151,152,153,154,155,156,157,158,159,160];
+for(m=11;m>=0;m--)
+{
+
+if(chck_form3.box3[m].checked == true)
+{
+//alert("checked"+ i);
+p.push(n[m]);
+q.push(nn[m]);
+r.push(nnn[m]);
+}
+}
+var a=0;
+
+var b=[37,38,39,40,41,42,43,44,45,46,47,48];
+var bb=[99,100,101,102,103,104,105,106,107,108,109,110];
+var bbb=[161,162,163,164,165,166,167,168,169,170,171,172];
+for(a=11;a>=0;a--)
+{
+
+if(chck_form4.box4[a].checked == true)
+{
+//alert("checked"+ i);
+p.push(b[a]);
+q.push(bb[a]);
+r.push(bbb[a]);
+}
+}
+var c=0;
+
+var d=[49,50,51,52,53,54,55,56,57,58,59,60];
+var dd=[111,112,113,114,115,116,117,118,119,120,121,122];
+var ddd=[173,174,175,176,177,178,179,180,181,182,183,184];
+for(c=11;c>=0;c--)
+{
+
+if(chck_form5.box5[c].checked == true)
+{
+//alert("checked"+ i);
+p.push(d[c]);
+q.push(dd[c]);
+r.push(ddd[c]);
+}
+}
+if(p.length==1)
+{
+	alert(" Please select atleast one");
+}
+else{
+view.setColumns(p);
+view1.setColumns(q);
+view2.setColumns(r);
+draw();
+    
+}
+
+      }  
+	  
+  }
+
+</script>
+</head>
+
+<body>
+    <div id="homepage">
+		<div class="logo"></div>
+        <div class="dropdown"><a href="home.html">Home</a></div>
+        <div class="dropdown"><a href="#">Analysis</a>
+		<div class="dropdown-content">
+     <a href="Bymonth.html">By month</a>
+    <a href="Bystate.html">By state</a>
+    <a href="Byyear.html">By year</a>
+  </div></div>
+	    <div class="dropdown"><a href="#">Prediction</a>
+		<div class="dropdown-content">
+	<a href="Ohio.html">2016</a>
+	<a href="prediction.html">Prediction</a>
+  </div>
+		</div>
+	</div>
+    <div id="mainPicture">
+    	<div class="picture">
+        	
+			<div class="name">
+			<p>Anudeep Gajapuram</p>
+			</div>
+			<div id="headerTitle">Instructor</div>
+			<div id="headerSubtext">Dr En Cheng</div>
+            
+        </div>
+		<div class="context">
+		<h1 class="heading">Prediction of Utility with change in Weather and Population</h1>
+		<div class="middlecontent">
+		<p>This application will provide a detailed analysis on how the weather changes are related to the consumption of utilities. In this application, we are integrating the weather data with utilities, population.</p>
+<p>By integrating this data we are going to propose a system which determines how weather affects the consumption of utilities and predict the future utility consumption.  
+</p>
+<br>
+<p><b>Weather data:</b>The data related to weather is taken from data.gov. Filtering of weather data was crucial as it has multiple dimensions like extreme temperatures, mean temperatures, maximum and minimum values out of which we have considered monthly mean temperature (MNTM). The attributes include station name, station Id, date and MNTM values.</p>
+		<p><b>Utility data:</b>Utility data is collected from eia.gov. Utility data consists of Retail Sales of Electricity to Ultimate Customers by End-Use Sector, by State, by month and year. It is measured in Million Kilowatt-hours and data of different sectors which includes Residential, Commercial, Industrial, Transportational is combined to form an all sector data.</p>
+		<p><b>Population:</b>Population data is collected from nber.org. The National Bureau of Economic Research (NBER) is an American private nonprofit research organization. This repository provides the fine granularity of data, which provides the population of every county in a particular state.</p>
+		</div>
+		</div>
+    </div>
+       
+       
+</body>
+</html>

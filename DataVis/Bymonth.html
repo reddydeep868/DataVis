@@ -1,0 +1,669 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="Stylesheet.css" />
+<style>
+#columnchart{
+width: 500px;
+height: 500px;
+}
+#columnchart1{
+width: 500px;
+height: 500px;
+
+}
+#columnchart2{
+width: 500px;
+height: 500px;
+}
+#checkboxes1{
+width: 200px;
+border: 1px solid #2c3e50;
+box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+border-radius: 3px;
+margin: 25px;
+padding: 25px;
+float: left;
+display:none;
+
+}
+#checkboxes2{
+width: 200px;
+border: 1px solid #2c3e50;
+box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+border-radius: 3px;
+margin: 25px;
+padding: 25px;
+float: left;
+display:none;
+}
+#checkboxes3{
+width: 200px;
+border: 1px solid #2c3e50;
+box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+border-radius: 3px;
+margin: 25px;
+padding: 25px;
+float: left;
+display:inline;
+}
+#checkboxes4{
+width: 200px;
+border: 1px solid #2c3e50;
+box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+border-radius: 3px;
+margin: 25px;
+padding: 25px;
+float: left;
+display:none;
+
+}
+#checkboxes5{
+width: 200px;
+border: 1px solid #2c3e50;
+box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+border-radius: 3px;
+margin: 25px;
+padding: 25px;
+float: left;
+display:none;
+
+}
+
+ul li{
+list-style: none;
+}
+
+#chart,#chart1,#chart2{
+float:left;
+
+padding: 25px;
+margin: 25px;
+float: left;
+}
+#top{
+width: 100%;
+padding: 10px 0px 10px 5px;
+}
+
+</style>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", '1', {packages:['corechart']});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  var query = new google.visualization.Query(
+      'https://docs.google.com/spreadsheets/d/1hGr8IwaPaMmFnT8PzP7heVffhlZkz_K04K8OOUuOlMg/edit#gid=0');
+  query.send(handleQueryResponse);
+}
+
+function handleQueryResponse(response) {
+  if (response.isError()) {
+    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+    return;
+  }
+  var data = response.getDataTable();
+  var view= new google.visualization.DataView(data);
+   var view1= new google.visualization.DataView(data);
+   var view2= new google.visualization.DataView(data);
+var p=[0,61];
+var q=[62,122];
+var r=[123,183];
+  view.setColumns(p);
+  view1.setColumns(q);
+  view2.setColumns(r);
+var options={
+width: 800,
+      height: 500,
+	  
+      vAxis: {minValue:0, maxValue:10,title: 'Utility(1000 MWH)'},
+	  hAxis: { ticks: [2006,
+2007,
+2008,
+2009,
+2010,
+2011,
+2012,
+2013,
+2014,
+2015],format:'####',title:'Year'},
+animation: {
+        duration: 1000,
+        easing: 'out'
+      },
+	  title: "Statistical Analysis of Weather and Utility Data",
+	  
+	  
+};
+var options1={
+width: 800,
+      height: 500,
+	  
+      vAxis: {minValue:0, maxValue:10,title: 'Weather(MNTM) Degrees F'},
+	  hAxis: { ticks: [2006,
+2007,
+2008,
+2009,
+2010,
+2011,
+2012,
+2013,
+2014,
+2015],format:'####',title:'Year'},
+animation: {
+        duration: 1000,
+        easing: 'out'
+      },
+	  title: "Statistical Analysis of Weather and Utility Data",
+	  //curveType: "function"
+	  
+};
+var options2={
+width: 800,
+      height: 500,
+	  
+      vAxis: {minValue:0, maxValue:10,title: 'Population'},
+	  hAxis: { ticks: [2006,
+2007,
+2008,
+2009,
+2010,
+2011,
+2012,
+2013,
+2014,
+2015],format:'####',title:'Year'},
+animation: {
+        duration: 1000,
+        easing: 'out'
+      },
+	};
+    var button = document.getElementById('gen');
+  var chart = new google.visualization.LineChart(document.getElementById('columnchart'));
+ var chart1 = new google.visualization.LineChart(document.getElementById('columnchart1'));
+  var chart2 = new google.visualization.LineChart(document.getElementById('columnchart2'));
+  var drop = document.getElementById('dropdown');
+  drop.onchange=function(){
+  
+
+  
+ if( drop.selectedIndex==1){
+ var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form2.box2[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form3.box3[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form4.box4[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+ 
+  var elem = document.getElementById('checkboxes1');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes4');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes3');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes2');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  if( drop.selectedIndex==2){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form3.box3[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form4.box4[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+  //document.getElementById("checkboxes1").style.display = 'none';
+  var elem = document.getElementById('checkboxes2');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes1');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes3');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes4');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  if( drop.selectedIndex==3){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form2.box2[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form4.box4[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+  //document.getElementById("checkboxes2").style.display = 'none';
+  var elem = document.getElementById('checkboxes3');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes2');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes1');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes4');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  if( drop.selectedIndex==4){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form2.box2[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form3.box3[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form5.box5[t3].checked=false;
+ }
+  //document.getElementById("checkboxes2").style.display = 'none';
+  var elem = document.getElementById('checkboxes4');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes2');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes1');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes3');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes5');
+elem5.style.display = 'none';
+  }
+  
+  if( drop.selectedIndex==5){
+  var t=0;
+ for(t=0;t<12;t++)
+ {
+	chck_form1.box[t].checked=false;
+ }
+ var t1=0;
+ for(t1=0;t1<12;t1++)
+ {
+	chck_form3.box3[t1].checked=false;
+ }
+ var t2=0;
+ for(t2=0;t2<12;t2++)
+ {
+	chck_form2.box2[t2].checked=false;
+ }
+ var t3=0;
+ for(t3=0;t3<12;t3++)
+ {
+	chck_form4.box4[t3].checked=false;
+ }
+  //document.getElementById("checkboxes2").style.display = 'none';
+  var elem = document.getElementById('checkboxes5');
+elem.style.display = 'inline';
+var elem2 = document.getElementById('checkboxes3');
+elem2.style.display = 'none';
+
+var elem3 = document.getElementById('checkboxes1');
+elem3.style.display = 'none';
+
+var elem4 = document.getElementById('checkboxes2');
+elem4.style.display = 'none';
+
+var elem5 = document.getElementById('checkboxes4');
+elem5.style.display = 'none';
+  }
+  
+  }
+  draw();
+  function draw(){
+  chart.draw(view, options);
+ chart1.draw(view1, options1);
+ chart2.draw(view2, options2);
+  
+  }
+button.onclick = function() {
+var elem = document.getElementById('US');
+elem.style.display = 'none';
+p=[];
+q=[];
+r=[];
+p.push(0);
+q.push(0);
+r.push(0);
+var i=0;
+
+var j=[1,2,3,4,5,6,7,8,9,10,11,12];
+var jj=[62,63,64,65,66,67,68,69,70,71,72,73];
+var jjj=[123,124,125,126,127,128,129,130,131,132,133,134];
+for(i=11;i>=0;i--)
+{
+
+if(chck_form1.box[i].checked == true)
+{
+p.push(j[i]);
+q.push(jj[i]);
+r.push(jjj[i]);
+
+}
+}
+var k=0;
+var l=[13,14,15,16,17,18,19,20,21,22,23,24];
+var ll=[74,75,76,77,78,79,80,81,82,83,84,85];
+var lll=[135,136,137,138,139,140,141,142,143,144,145,146];
+for(k=11;k>=0;k--)
+{
+
+if(chck_form2.box2[k].checked == true)
+{
+//alert("checked"+ i);
+p.push(l[k]);
+q.push(ll[k]);
+r.push(lll[k]);
+}
+}
+var m=0;
+var n=[25,26,27,28,29,30,31,32,33,34,35,36];
+var nn=[86,87,88,89,90,91,92,93,94,95,96,97];
+var nnn=[147,148,149,150,151,152,153,154,155,156,157,158];
+for(m=11;m>=0;m--)
+{
+
+if(chck_form3.box3[m].checked == true)
+{
+//alert("checked"+ i);
+p.push(n[m]);
+q.push(nn[m]);
+r.push(nnn[m]);
+}
+}
+var a=0;
+
+var b=[37,38,39,40,41,42,43,44,45,46,47,48];
+var bb=[98,99,100,101,102,103,104,105,106,107,108,109];
+var bbb=[159,160,161,162,163,164,165,166,167,168,169,170];
+for(a=11;a>=0;a--)
+{
+
+if(chck_form4.box4[a].checked == true)
+{
+p.push(b[a]);
+q.push(bb[a]);
+r.push(bbb[a]);
+}
+}
+var c=0;
+
+var d=[49,50,51,52,53,54,55,56,57,58,59,60];
+var dd=[110,111,112,113,114,115,116,117,118,119,120,121];
+var ddd=[171,172,173,174,175,176,177,178,179,180,181,182];
+for(c=11;c>=0;c--)
+{
+
+if(chck_form5.box5[c].checked == true)
+{
+p.push(d[c]);
+q.push(dd[c]);
+r.push(ddd[c]);
+}
+}
+if(p.length==1)
+{
+	alert(" Please select atleast one");
+}
+else{
+view.setColumns(p);
+view1.setColumns(q);
+view2.setColumns(r);
+draw();
+    
+}
+
+      }  
+	  
+  }
+
+</script>
+</head>
+
+<body>
+<div class="container">
+    <div id="page">
+        <div class="dropdown"><a href="home.html">Home</a></div>
+        <div class="dropdown"><a href="#">Analysis</a>
+		<div class="dropdown-content">
+    <a href="Bymonth.html">By month</a>
+    <a href="Bystate.html">By state</a>
+    <a href="Byyear.html">By year</a>
+	
+  </div></div>
+	    <div class="dropdown"><a href="#">Prediction</a>
+		<div class="dropdown-content">
+    
+	<a href="Ohio.html">2016</a>
+	<a href="prediction.html">Prediction</a>
+  </div>
+		</div>
+	</div>
+    
+        <div class="contentBox">
+		
+		<div class="innerBox">
+        	
+          <div class="contentText">
+			<div id="top">
+<h2>Analysis of weather on monthly basis</h2>
+
+<select id="dropdown">
+<option disabled selected value>Select State</option>
+<option>Ohio</option>
+<option>California</option>
+<option>Nebraska</option>
+<option>New York</option>
+<option>Texas</option>
+
+
+</select>
+<button id="gen" >Generate the chart</button>
+</div>
+
+<div id="checkboxes1">
+
+<form id="chck_form1">
+<ul>
+<li><input type="checkbox" id="box" class="check" >Jan</li>
+
+<li><input type="checkbox" id="box" class="check">Feb</li>
+<li><input type="checkbox" id="box" class="check">Mar</li>
+
+<li><input type="checkbox" id="box" class="check">April</li>
+
+<li><input type="checkbox" id="box" class="check">May</li>
+
+<li><input type="checkbox" id="box" class="check">June</li>
+
+<li><input type="checkbox" id="box" class="check">July</li>
+<li><input type="checkbox" id="box" class="check">Aug</li>
+<li><input type="checkbox" id="box" class="check">Sep</li>
+<li><input type="checkbox" id="box" class="check">Oct</li>
+<li><input type="checkbox" id="box" class="check">Nov</li>
+<li><input type="checkbox" id="box" class="check">Dec</li>
+
+
+</ul>
+</form>
+</div>
+
+<div id="checkboxes2">
+<form id="chck_form2">
+<ul>
+<li><input type="checkbox" id="box2" class="check">Jan</li>
+
+<li><input type="checkbox" id="box2" class="check">Feb</li>
+<li><input type="checkbox" id="box2" class="check">Mar</li>
+
+<li><input type="checkbox" id="box2" class="check">April</li>
+
+<li><input type="checkbox" id="box2" class="check">May</li>
+
+<li><input type="checkbox" id="box2" class="check">June</li>
+
+<li><input type="checkbox" id="box2" class="check">July</li>
+<li><input type="checkbox" id="box2" class="check">Aug</li>
+<li><input type="checkbox" id="box2" class="check">Sep</li>
+<li><input type="checkbox" id="box2" class="check">Oct</li>
+<li><input type="checkbox" id="box2" class="check">Nov</li>
+<li><input type="checkbox" id="box2" class="check">Dec</li>
+
+
+</ul>
+
+</form>
+</div>
+<div id="checkboxes3">
+<form id="chck_form3">
+<ul>
+<li><input type="checkbox" id="box3" class="check">Jan</li>
+<li><input type="checkbox" id="box3" class="check">Feb</li>
+<li><input type="checkbox" id="box3" class="check">Mar</li>
+<li><input type="checkbox" id="box3" class="check">April</li>
+<li><input type="checkbox" id="box3" class="check">May</li>
+<li><input type="checkbox" id="box3" class="check">June</li>
+<li><input type="checkbox" id="box3" class="check">July</li>
+<li><input type="checkbox" id="box3" class="check">Aug</li>
+<li><input type="checkbox" id="box3" class="check">Sep</li>
+<li><input type="checkbox" id="box3" class="check">Oct</li>
+<li><input type="checkbox" id="box3" class="check">Nov</li>
+<li><input type="checkbox" id="box3" class="check">Dec</li>
+
+</ul>
+
+</form>
+</div>
+<div id="checkboxes4">
+<form id="chck_form4">
+<ul>
+<li><input type="checkbox" id="box4" class="check">Jan</li>
+<li><input type="checkbox" id="box4" class="check">Feb</li>
+<li><input type="checkbox" id="box4" class="check">Mar</li>
+<li><input type="checkbox" id="box4" class="check">April</li>
+<li><input type="checkbox" id="box4" class="check">May</li>
+<li><input type="checkbox" id="box4" class="check">June</li>
+<li><input type="checkbox" id="box4" class="check">July</li>
+<li><input type="checkbox" id="box4" class="check">Aug</li>
+<li><input type="checkbox" id="box4" class="check">Sep</li>
+<li><input type="checkbox" id="box4" class="check">Oct</li>
+<li><input type="checkbox" id="box4" class="check">Nov</li>
+<li><input type="checkbox" id="box4" class="check">Dec</li>
+
+</ul>
+
+</form>
+</div>
+<div id="checkboxes5">
+<form id="chck_form5">
+<ul>
+<li><input type="checkbox" id="box5" class="check">Jan</li>
+<li><input type="checkbox" id="box5" class="check">Feb</li>
+<li><input type="checkbox" id="box5" class="check">Mar</li>
+<li><input type="checkbox" id="box5" class="check">April</li>
+<li><input type="checkbox" id="box5" class="check">May</li>
+<li><input type="checkbox" id="box5" class="check">June</li>
+<li><input type="checkbox" id="box5" class="check">July</li>
+<li><input type="checkbox" id="box5" class="check">Aug</li>
+<li><input type="checkbox" id="box5" class="check">Sep</li>
+<li><input type="checkbox" id="box5" class="check">Oct</li>
+<li><input type="checkbox" id="box5" class="check">Nov</li>
+<li><input type="checkbox" id="box5" class="check">Dec</li>
+
+</ul>
+
+</form>
+</div>
+</div>
+<div class="tables">
+
+<div id="chart">
+<p><b>The below Line Chart shows the statistics of the Utility monthly</b><p>
+<p id="US"><b>Utility<b><p>
+<span id='columnchart'></span>
+
+</div>
+<div id="chart1">
+<p>The below Line Chart shows the statistics of the Weather monthly<p>
+<p id="US"><b>Weather<b><p>
+<span id='columnchart1'></span>
+
+</div>
+<div id="chart2">
+<p>The below Line Chart shows the statistics of the Population monthly<p>
+<p id="US"><b>Population<b><p>
+<span id='columnchart2'></span>
+
+</div>
+</div>
+
+		  
+        </div>
+
+    </div>
+       </div>
+</body>
+</html>

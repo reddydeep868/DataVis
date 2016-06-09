@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="Stylesheet.css" />
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['geomap']});
+    google.charts.setOnLoadCallback(drawMap);
+	google.charts.setOnLoadCallback(drawMapone);
+
+      function drawMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['State', 'Total Utility'],
+          ['Ohio', 146856],
+          ['California',258626 ],
+          ['Nebraska', 29256],
+          ['New york', 147786],
+          ['Texas', 384937]
+        ]);
+
+        var options = {};
+		 options['region'] = 'US';
+ 
+        options['dataMode'] = 'regions';
+
+        var container = document.getElementById('regions_div');
+        var geomap = new google.visualization.GeoMap(container);
+
+        geomap.draw(data, options);
+      };
+	  function drawMapone() {
+        var data1 = google.visualization.arrayToDataTable([
+          ['State', 'Total Utility'],
+          ['Ohio', 0.0126],
+          ['California',0.0066],
+          ['Nebraska', 0.0150],
+          ['New york', 0.0074],
+          ['Texas', 0.0140]
+        ]);
+
+        var options1 = {};
+		 options1['region'] = 'US';
+ 
+        options1['dataMode'] = 'regions';
+
+        var container1 = document.getElementById('regions_div1');
+        var geomap1 = new google.visualization.GeoMap(container1);
+
+        geomap1.draw(data1, options1);
+      };
+    </script>
+  </head>
+  <body>
+  <div id="homepage">
+		<div class="logo"></div>
+        <div class="dropdown"><a href="home.html">Home</a></div>
+        <div class="dropdown"><a href="#">Analysis</a>
+		<div class="dropdown-content">
+     <a href="Bymonth.html">By month</a>
+    <a href="Bystate.html">By state</a>
+    <a href="Byyear.html">By year</a>
+  </div></div>
+	    <div class="dropdown"><a href="#">Prediction</a>
+		<div class="dropdown-content">
+	<a href="Ohio.html">2016</a>
+	<a href="prediction.html">Prediction</a>
+  </div>
+		</div>
+	</div>
+	<div class="picture">
+        	
+            
+        </div>
+		<div class="headingone">Total Utility for 2015</div>
+    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+	<div class="headingtwo">Ratio of total Utility with population for 2015</div>
+	<div id="regions_div1" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

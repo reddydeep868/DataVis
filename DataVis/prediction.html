@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="Stylesheet.css" />
+<style>
+
+form{
+	position:absolute;
+	left:500px;
+	
+}
+#result{
+     font-weight:bold;
+    padding: 8% 3%;
+    margin: 15% 0;
+	    border-radius: 3px;
+		font-size:14px;
+		font-family:TimesNewRoman;
+		
+}
+.calculate{
+	padding:4% 20%;
+	color:white;
+    background-color: #337ab7;
+}
+</style>
+<script>
+function calculate(){
+var state = document.getElementById("dropdown").value;
+var month = document.getElementById("dropdown1").value;
+var weather = document.getElementById("weather").value;
+var val = Number(weather);
+if(!(state == "Ohio" ||state == "California"||state == "Nebraska"||state == "New York"||state == "Texas")){
+alert("Please select the valid state");
+return;
+}
+if(!(month=="Jan"||month=="Feb"||month=="Mar"||month=="Apr"||month=="May"||month=="Jun"||month=="Jul"||month=="Aug"||month=="Sep"||month=="Oct"||month=="Nov")||month=="Dec"){
+alert("Please select the valid month");
+return;
+}
+if(weather == null || weather == "" || weather<-10 ||weather>100){
+alert("Please enter the range between -10 and 100");
+return;
+}
+
+if(state == "Ohio"){
+if(month == "Jan"){
+val = (101095.672775932)+(-85.5602)*val+ (-0.0073)*(11630843);
+}
+if(month == "Feb"){
+val = (91001.1086664177)+(-74.1666)*val+ (-0.0066)*(11630843);
+}
+if(month == "Mar"){
+val = (138036.614125599)+(-77.0929)*val+ (-0.0105)*(11630843);
+}
+if(month == "Apr"){
+val = (136396.7743525)+((-117.8271)*val)+ (-0.0103)*(11630843);
+}
+if(month == "May"){
+val = (114497.168836994)+((96.4885)*val)+ (-0.0094)*(11630843);
+}
+if(month == "Jun"){
+val = (104197.151555156)+((301.3192)*val)+ (-0.0097)*(11630843);
+}
+if(month == "Jul"){
+val = (88667.1646168821)+((278.5186)*val)+ (-0.0082)*(11630843);
+}
+if(month == "Aug"){
+val = (78473.6712909274)+((361.7766)*val)+ (-0.0078)*(11630843);
+}
+if(month == "Sep"){
+val = (92026.0296794441)+((231.2550)*val)+ (-0.0082)*(11630843);
+}
+if(month == "Oct"){
+val = (142045.410930802)+((95.0164)*val)+ (-0.0117)*(11630843);	
+}
+if(month == "Nov"){
+val = (113762.887288885)+((-75.2061)*val)+ (-0.0085)*(11630843);
+}
+if(month == "Dec"){
+val = (96488.5838223117)+((-99.5259)*val)+ (-0.0069)*(11630843);
+}
+}
+if(state == "California"){
+if(month == "Jan"){
+val = 37602.7812268236+((-94.99)*val)+ (-0.00033)*(39516694);
+}
+if(month == "Feb"){
+val = 31414.5865438718 + ((-17.5385)*val)+ (-0.00031)*(39516694);
+}
+if(month == "Mar"){
+val = 34741.9482397028+((19.2537)*val) +(-0.000419)*(39516694);
+}
+if(month == "Apr"){
+val = 16326.2564803442+((-5.6544)*(val)) + (0.000087)*(39516694);
+}
+if(month == "May"){
+val = 21771.39528828+((35.2845)*(val)) + (-0.00010)*(39516694);
+}
+if(month == "Jun"){
+val = 29497.1117512822+((-7.7925)*(val)) + (-0.00019)*(39516694);
+}
+if(month == "Jul"){
+val = 34172.7049952679+((-35.5308)*(val)) + (-0.00019)*(39516694);
+}
+if(month == "Aug"){
+val = 43247.9964664192+((-5.0895)*(val)) + (-0.00047)*(39516694);
+}
+if(month == "Sep"){
+val = 20513.434813843+((-33.6995)*(val)) + (0.00017)*(39516694);
+}
+if(month == "Oct"){
+val = 6099.88295138798+((336.31209)*(val)) + (-0.00009)*(39516694);
+}
+if(month == "Nov"){
+val = 41155.7396728667+((-184.8241)*(val)) + (-0.000312)*(39516694);
+}
+if(month == "Dec"){
+val = 24216.5463318902+((79.5796)*(val)) + (-0.000166)*(39516694);
+}
+}
+if(state == "Nebraska"){
+if(month == "Jan"){
+val = (-899.782692)+((-18.7397)*val)+ (0.00215)*(1909463);
+}
+if(month == "Feb"){
+val = (475.768479862596)+((-13.2556)*val)+ (0.001231)*(1909463);
+}
+if(month == "Mar"){
+val = (-40.5893952484794)+((-8.103865)*val)+ (0.00147)*(1909463);
+}
+if(month == "Apr"){
+val = (51.8378905133281)+((-8.06072)*val)+ (0.00134)*(1909463);
+}
+if(month == "May"){
+val =(-2023.14374460821)+((18.6574)*val)+ (0.0017)*(1909463);
+}
+if(month == "Jun"){
+val = (-3169.65808995832)+((53.6460)*val)+ (0.00102)*(1909463);
+}
+if(month == "Jul"){
+val = (-6525.35361913328)+((60.90043)*val)+ (0.00266)*(1909463);
+}
+if(month == "Aug"){
+val = (-2879.92694678688)+((38.61763)*val)+ (0.00158)*(1909463);
+}
+if(month == "Sep"){
+val = (-1471.1224879503)+((19.64667)*val)+ (0.00141)*(1909463);
+}
+if(month == "Oct"){
+val = (199.366187613736)+((-5.41417)*val)+ (0.00123)*(1909463);
+}
+if(month == "Nov"){
+val = (666.433974647611)+((-8.46205)*val)+ (0.00103)*(1909463);
+}
+if(month == "Dec"){
+val = (-348.793868180705)+((-31.29167)*val)+ (0.00202)*(1909463);
+}
+}
+
+if(state == "New York"){
+if(month == "Jan"){
+val = (33269.4055206377)+((-42.345750)*val)+ (-0.00101)*(19849239);
+}
+if(month == "Feb"){
+val = (20167.2116575984)+((-72.1957)*val)+ (-0.0003)*(19849239);
+}
+if(month == "Mar"){
+val = (32917.9970275483)+((-76.5524)*val)+ (-0.00096)*(19849239);
+}
+if(month == "Apr"){
+val = (39076.9026827831)+((-148.8899)*val)+ (-0.00109)*(19849239);
+}
+if(month == "May"){
+val =(23257.3939649583)+((-5.9726)*val)+ (-0.00062)*(19849239);
+}
+if(month == "Jun"){
+val = (-699.143869416184)+((163.67325)*val)+ (0.00010)*(19849239);
+}
+if(month == "Jul"){
+val = (19860.9912625915)+((215.57688)*val)+ (-0.00108)*(19849239);
+}
+if(month == "Aug"){
+val = (4777.21676569814)+((196.0699)*val)+ (-0.00021)*(19849239);
+}
+if(month == "Sep"){
+val = (-20894.7749545762)+((155.9558)*val)+ (0.001235)*(19849239);
+}
+if(month == "Oct"){
+val = (11291.5984280509)+((106.9761)*val)+ (-0.00027)*(19849239);
+}
+if(month == "Nov"){
+val = (22752.6414)+((-29.55769)*val)+ (-0.00054)*(19849239);
+}
+if(month == "Dec"){
+val = (5893.08356279746)+((-51.39154)*val)+ (0.00039)*(19849239);
+}
+}
+
+if(state == "Texas"){
+if(month == "Jan"){
+val = (7524.38228407203)+((-239.9872)*val)+ (0.0013)*(27963558);
+}
+if(month == "Feb"){
+val = (14628.8554083866)+((-260.1450)*val)+ (0.00096)*(27963558);
+}
+if(month == "Mar"){
+val = (10035.7724144017)+((-154.6049)*val)+ (0.000986)*(27963558);
+}
+if(month == "Apr"){
+val = (-5019.11107876269)+((159.1463)*val)+ (0.00078)*(27963558);
+}
+if(month == "May"){
+val =(-31966.9597987583)+((523.5716)*val)+ (0.00083)*(27963558);
+}
+if(month == "Jun"){
+val = (-26872.4411319478)+((442.2765)*val)+ (0.00092)*(27963558);
+}
+if(month == "Jul"){
+val = (-29997.9539073015)+((412.4899)*val)+ (0.00125)*(27963558);
+}
+if(month == "Aug"){
+val = (-64801.7746698523)+((879.2766)*val)+ (0.00112)*(27963558);
+}
+if(month == "Sep"){
+val = (-47363.5333345286)+((765.2142)*val)+ (0.00088)*(27963558);
+}
+if(month == "Oct"){
+val = (-37979.3552833995)+((638.33871)*val)+ (0.00096)*(27963558);
+}
+if(month == "Nov"){
+val = (10231.3373221583)+((-110.4723)*val)+ (0.00084)*(27963558);
+}
+if(month == "Dec"){
+val = (11623.3768434758)+((-298.9876)*val)+ (0.0012)*(27963558);
+}
+}
+val=Math.round(val)
+document.getElementById("result").innerHTML  = val;
+}
+
+</script>
+</head>
+<body>
+<div id="homepage">
+		<div class="logo"></div>
+        <div class="dropdown"><a href="home.html">Home</a></div>
+        <div class="dropdown"><a href="#">Analysis</a>
+		<div class="dropdown-content">
+     <a href="Bymonth.html">By month</a>
+    <a href="Bystate.html">By state</a>
+    <a href="Byyear.html">By year</a>
+  </div></div>
+	    <div class="dropdown"><a href="#">Prediction</a>
+		<div class="dropdown-content">
+	<a href="Ohio.html">2016</a>
+	<a href="prediction.html">Prediction</a>
+  </div>
+		</div>
+	</div>
+	<div class="picture">
+        	
+            
+        </div>
+
+
+<form>
+<div class="state">State:</div>
+<select id="dropdown" class="statepred">
+<option disabled selected value> -- select state -- </option>
+<option>Ohio</option>
+<option>California</option>
+<option>Nebraska</option>
+<option>New York</option>
+<option>Texas</option>
+</select>
+<br>
+<div class="month">Month:</div>
+<select id="dropdown1" class="monthpred">
+<option disabled selected value> -- select month -- </option>
+<option>Jan</option>
+<option>Feb</option>
+<option>Mar</option>
+<option>Apr</option>
+<option>May</option>
+<option>Jun</option>
+<option>Jul</option>
+<option>Aug</option>
+<option>Sep</option>
+<option>Oct</option>
+<option>Nov</option>
+<option>Dec</option>
+</select>
+<br>
+<div class="weather">Weather (F):</div>
+<input type = "text" id = "weather" name ="weather"><br>
+<input type ="button" value ="Calculate" onClick = "calculate()" class="calculate"></input>
+<div id="result"></div>
+</form>
+
+</body>
+</html>

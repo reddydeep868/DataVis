@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="Stylesheet.css" />
+<style>
+select{
+margin-left:30%;
+}
+</style>
+<body>
+<div id="homepage">
+		<div class="logo"></div>
+        <div class="dropdown"><a href="home.html">Home</a></div>
+        <div class="dropdown"><a href="#">Analysis</a>
+		<div class="dropdown-content">
+     <a href="Bymonth.html">By month</a>
+    <a href="Bystate.html">By state</a>
+    <a href="Byyear.html">By year</a>
+  </div></div>
+	    <div class="dropdown"><a href="#">Prediction</a>
+		<div class="dropdown-content">
+	<a href="Ohio.html">2016</a>
+	<a href="prediction.html">Prediction</a>
+  </div>
+		</div>
+	</div>
+	<div class="mainbody">
+	<div class="picture">
+		
+        	 <select onchange="location = this.options[this.selectedIndex].value;">
+    
+    <option value="Ohio.html">Ohio</option>
+    <option value="California.html" Selected="selected">California</option>
+    <option value="Nebraska.html">Nebraska</option>
+	    <option value="Newyork.html">Newyork</option>
+	<option value="Texas.html">Texas</option>
+</select>​
+        </div>
+		  
+  <div id="chart_div"></div>
+   <div id="chart_div1"></div>
+    <div id="chart_div2"></div></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
+
+<script>
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+google.charts.setOnLoadCallback(drawBasicone);
+google.charts.setOnLoadCallback(drawBasictwo);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+     data.addColumn('string', 'Months');
+      data.addColumn('number', 'Utility');
+	   
+
+      data.addRows([
+        ['Jan', 20324.76831],
+        ['Feb', 18360.47989],
+        ['Mar', 19129.59833],
+        ['Apr', 19466.41988],
+        ['May', 19903.69903],
+        ['Jun', 21472.66339],
+        ['Jul', 24104.32581],
+        ['Aug', 24312.93566],
+        ['Sep', 24944.28993],
+        ['Oct', 22881.84869],
+		['Nov', 19286.09593],
+		['Dec', 21194.24751],
+      ]);
+
+      var options = {
+        title: 'Utility in 2016',
+		width:700,
+		height:500,
+        hAxis: {
+          title: 'Month',
+          viewWindow: {
+            min: [7, 30, 0],
+            max: [17, 30, 0]
+          }
+        },
+        vAxis: {
+          
+		  minValue:0, maxValue:10,title: 'Utility(1000MWH)'
+        },
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+	
+
+
+function drawBasicone() {
+
+      var data1 = new google.visualization.DataTable();
+     data1.addColumn('string', 'Months');
+      data1.addColumn('number', 'Weather');
+	   
+
+      data1.addRows([
+        ['Jan', 44.691],
+        ['Feb', 45.8381],
+        ['Mar', 49.089],
+        ['Apr', 52.665],
+        ['May', 59.062],
+        ['Jun', 66.253],
+        ['Jul', 72.056],
+        ['Aug', 71.169],
+        ['Sep', 67.864],
+        ['Oct', 60.475],
+		['Nov', 51.619],
+		['Dec', 44.452],
+      ]);
+
+      var options1 = {
+        title: 'Weather in 2016',
+		width:700,
+		height:500,
+        hAxis: {
+          title: 'Month',
+          viewWindow: {
+            min: [7, 30, 0],
+            max: [17, 30, 0]
+          }
+        },
+        vAxis: {
+          
+		  minValue:0, maxValue:10,title: 'Weather(MNTM) Degrees F'
+        },
+      };
+
+      var chart1 = new google.visualization.ColumnChart(
+        document.getElementById('chart_div1'));
+
+      chart1.draw(data1, options1);
+    }
+	
+
+function drawBasictwo() {
+
+      var data2 = new google.visualization.DataTable();
+     data2.addColumn('string', 'Months');
+      data2.addColumn('number', 'Population');
+	   
+
+      data2.addRows([
+        ['Jan', 39516694],
+        ['Feb', 39516694],
+        ['Mar', 39516694],
+        ['Apr', 39516694],
+        ['May', 39516694],
+        ['Jun', 39516694],
+        ['Jul', 39516694],
+        ['Aug', 39516694],
+        ['Sep', 39516694],
+        ['Oct', 39516694],
+		['Nov', 39516694],
+		['Dec', 39516694],
+      ]);
+
+      var options2 = {
+        title: 'Population in 2016',
+		width:700,
+		height:500,
+        hAxis: {
+          title: 'Month',
+          viewWindow: {
+            min: [7, 30, 0],
+            max: [17, 30, 0]
+          }
+        },
+        vAxis: {
+          
+		   minValue:0, maxValue:100,title: 'Population'
+        },
+      };
+
+      var chart2 = new google.visualization.ColumnChart(
+        document.getElementById('chart_div2'));
+
+      chart2.draw(data2, options2);
+    }
+
+</script>
